@@ -30,8 +30,11 @@ def shorten_link(long_url, custom_alias=None):
 
 def amazon_convert(url):
     response = requests.get(url)
-    url = response.url
+    final_url = response.url
+
     for tag in Telegram.FILTER_AMAZON_TAGS:
-        url = response.url.replace(tag,Telegram.YOUR_AMAZON_TAG)
-    return shorten_link(url)
+        if tag in final_url:
+            final_url = final_url.replace(tag, Telegram.YOUR_AMAZON_TAG)
+
+    return shorten_link(final_url)
 
