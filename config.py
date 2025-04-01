@@ -1,5 +1,5 @@
 from os import environ as env
-from dotenv import load_dotenv
+
 class Telegram:
     API_ID = int(env.get("API_ID"))
     API_HASH = env.get("API_HASH")
