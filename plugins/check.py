@@ -11,7 +11,13 @@ async def check(client, message):
             aurl = amazon_convert(url)
             completed_urls.append((url, aurl))
         elif "youtu.be" in url or "t.me" in url or "youtube.com" in url:
-            print("Youtube Spoted")
+            await client.send_message(
+                chat_id = Telegram.LOG_GROUP_ID,
+                text = "This is a youtube or telegram link, please check it manually.\nhttps://t.me/{}/{}".format(
+                    message.sender_chat.id,
+                    message.id
+                    )
+            )
         else:
             response = convert_rest(url)
             if response.get("convertedText"):
@@ -19,7 +25,15 @@ async def check(client, message):
                 aurl = urllib.parse.unquote(aurl)
                 completed_urls.append((url, aurl))
             else:
-                await print("No Link Found")
+                await client.send_message(
+                    chat_id = Telegram.LOG_GROUP_ID,
+                    text = "This is not a supported link, please check it manually.\n{}".format(url)
+                )
+                await client.send_message(
+                    chat_id = Telegram.MAIN_CHAT_ID,
+                    text = "{response}"
+                )
+
     if completed_urls:
         caption = message.caption
         for url,aurl in completed_urls:
@@ -30,4 +44,7 @@ async def check(client, message):
             caption=caption
         )
     else:
-        print("No links found in the message.")
+        await client.send_message(
+            chat_id = Telegram.LOG_GROUP_ID,
+            text = "No supported links found in the message."
+        )
