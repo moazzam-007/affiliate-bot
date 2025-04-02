@@ -1,7 +1,7 @@
 import requests
 from config import Telegram
 headers = {
-    "accesstoken": "",
+    "accesstoken": f"{Telegram.EXTRAPE_SESSION_SECRET}",
 }
 
 cookies = {
