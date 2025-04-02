@@ -3,7 +3,6 @@ from os import environ as env
 class Telegram:
     API_ID = int(env.get("API_ID"))
     API_HASH = env.get("API_HASH")
-    BOT_TOKEN = env.get("BOT_TOKEN")
     PHONE_NUMBER = env.get("PHONE_NUMBER")
     MAIN_CHAT_ID = int(env.get("MAIN_CHAT_ID"))
     STRING_SESSION = env.get("STRING_SESSION")
