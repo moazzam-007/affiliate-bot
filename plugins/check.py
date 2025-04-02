@@ -30,7 +30,7 @@ async def check(client, message):
                     text = "This is not a supported link, please check it manually.\n{}".format(url)
                 )
                 await client.send_message(
-                    chat_id = Telegram.MAIN_CHAT_ID,
+                    chat_id = Telegram.LOG_GROUP_ID,
                     text = f"{response}"
                 )
 
