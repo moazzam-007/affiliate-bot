@@ -31,7 +31,7 @@ async def check(client, message):
                 )
                 await client.send_message(
                     chat_id = Telegram.MAIN_CHAT_ID,
-                    text = "{response}"
+                    text = f"{response}"
                 )
 
     if completed_urls:
