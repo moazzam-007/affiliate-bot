@@ -1,3 +1,6 @@
 pyrofork
 requests
 TgCrypto
+python-dotenv
+Flask
+gunicorn
